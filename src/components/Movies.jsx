@@ -1,35 +1,29 @@
 import React from "react";
 import styled from "styled-components";
- 
+ import {selectMovies} from "../features/movie/movieSlice"
+import {useSelector} from 'react-redux'
+
+
+
 function Movies() {
+
+
+const movies =useSelector(selectMovies);
+
+
+
   return (
     <Container>
       <h4>Recommended for You</h4>
       <Content>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
+        {movies && movies.map((movie)=>(
+          
+          <Wrap key={movie.id}>
+          <img src={movie.cardImg} />
         </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
-        <Wrap>
-          <img src="https://assets.foxdcg.com/dpp-uploaded/images/the-simpsons/keyart_s33.jpg" />
-        </Wrap>
+
+        ))}
+        
       </Content>
     </Container>
   );
